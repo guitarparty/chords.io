@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Chords.io example</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="javascripts/raphael-min.js"></script>
+        <script src="javascripts/chords.io.js"></script>
+        <script>
+            window.onload = function () {
+                var paper = Raphael("canvas", 64, 72);
+                drawChord({
+                    'canvas': paper,
+                    'chord': {
+                        'name': 'Am',
+                        'code': 'xo2210'
+                    }
+                });
+                var paper2 = Raphael("canvas2", 64, 72);
+                drawChord({
+                    'canvas': paper2,
+                    'chord': {
+                        'name': 'G#m',
+                        'code': '133111_4'
+                    }
+                });
+            };
+        </script>
+    </head>
+    <body>
+        <h1>Chords.io example</h1>
+        <div id="canvas"></div>
+        <div id="canvas2"></div>
+    </body>
+</html>
