@@ -7,29 +7,16 @@
         <script src="javascripts/raphael-min.js"></script>
         <script src="javascripts/chords.io.js"></script>
         <script>
-            window.onload = function () {
-                var paper = Raphael("canvas", 64, 72);
-                drawChord({
-                    'canvas': paper,
-                    'chord': {
-                        'name': 'Am',
-                        'code': 'xo2210'
-                    }
-                });
-                var paper2 = Raphael("canvas2", 64, 72);
-                drawChord({
-                    'canvas': paper2,
-                    'chord': {
-                        'name': 'G#m',
-                        'code': '133111_4'
-                    }
-                });
-            };
+            $(document).ready(function(){
+                $('.chord').chordsIO();
+            });
         </script>
     </head>
     <body>
         <h1>Chords.io example</h1>
-        <div id="canvas"></div>
-        <div id="canvas2"></div>
+        <ul>
+            <li class="chord" data-code="xo221o" data-name="Am"></li>
+            <li class="chord" data-code="x32o1o" data-name="C"></li>
+        </ul>
     </body>
 </html>
