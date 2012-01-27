@@ -75,10 +75,7 @@
                 var o = options;
                 
                 var obj = $(this);
-                var canvas = $('<div />');
-                obj.append(canvas);
-                console.log(canvas.first());
-                drawChord(Raphael(canvas[0], o.width, o.height), {
+                drawChord(Raphael(obj[0], o.width, o.height), {
                     'name': obj.attr('data-name'),
                     'code': obj.attr('data-code')
                 });
