@@ -14,10 +14,13 @@ Usage
 HTML
 
     <div data-code="xo221o" data-name="Am" />
+    <div data-code="x32o1o" data-name="C" />
+    <div data-code="133211_3" data-name="G" />
 
 JS
 
     $('div').chordsIO();
 
 Result
+
 ![Example chords](http://guitarparty.github.com/chords.io/images/example.png)
