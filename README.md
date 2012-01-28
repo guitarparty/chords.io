@@ -24,3 +24,15 @@ JS
 Result
 
 ![Example chords](http://guitarparty.github.com/chords.io/images/example.png)
+
+More examples
+-------------
+
+Check out [http://guitarparty.github.com/chords.io/](http://guitarparty.github.com/chords.io/)
+
+TODO
+----
+
+* Consider using something other than `data-` attributes. The name of the chords should
+  probably be a text within the element.
+* Listen for changes on elements and redraw the chords
