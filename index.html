@@ -8,6 +8,21 @@
         <script src="javascripts/chords.io.js"></script>
         <script>
             $(document).ready(function(){
+                $('.chordcolor').chordsIO({
+                    backgroundColor: '#03f',
+                    borderColor: '#0f0',
+                    textColor: '#f00',
+                    gridColor: '#fff',
+                    fingerColor: '#ff0',
+                    cornerRadius: 5,
+                    width: 150,
+                    height: 180,
+                    xs: 20,
+                    ys: 30,
+                    x0: 30,
+                    y0: 60
+                });
+
                 $('.chord').chordsIO();
             });
         </script>
@@ -17,6 +32,10 @@
         <ul>
             <li class="chord" data-code="xo221o" data-name="Am"></li>
             <li class="chord" data-code="x32o1o" data-name="C"></li>
+            <li class="chord" data-code="133211_3" data-name="G"></li>
+            <li class="chordcolor" data-code="xo221o" data-name="Am"></li>
+            <li class="chordcolor" data-code="x32o1o" data-name="C"></li>
+            <li class="chordcolor" data-code="133211_3" data-name="G"></li>
         </ul>
     </body>
 </html>
