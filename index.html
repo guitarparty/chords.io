@@ -8,34 +8,61 @@
         <script src="javascripts/chords.io.js"></script>
         <script>
             $(document).ready(function(){
-                $('.chordcolor').chordsIO({
+                var settings = {
                     backgroundColor: '#03f',
-                    borderColor: '#0f0',
+                    borderColor: '#f00',
                     textColor: '#f00',
                     gridColor: '#fff',
                     fingerColor: '#ff0',
-                    cornerRadius: 5,
+                    cornerRadius: 15,
                     width: 150,
-                    height: 180,
+                    height: 190,
                     xs: 20,
                     ys: 30,
                     x0: 30,
                     y0: 60
-                });
-
+                };
+                
+                $('.chordcolor1').chordsIO(settings);
+                settings.cornerRadius = 5;
+                $('.chordcolor2').chordsIO(settings);
+                settings.cornerRadius = 0;
+                $('.chordcolor3').chordsIO(settings);
+                
                 $('.chord').chordsIO();
             });
         </script>
+        <style>
+            .gray {
+                background-color: #acd;
+            }
+            ul, ul li {
+                list-style: none
+            }
+            ul li {
+                display: inline;
+            }
+        </style>
     </head>
     <body>
-        <h1>Chords.io example</h1>
+        <h1>Chords.io examples</h1>
+        <h2>Plain vanilla chords</h2>
         <ul>
             <li class="chord" data-code="xo221o" data-name="Am"></li>
             <li class="chord" data-code="x32o1o" data-name="C"></li>
             <li class="chord" data-code="133211_3" data-name="G"></li>
-            <li class="chordcolor" data-code="xo221o" data-name="Am"></li>
-            <li class="chordcolor" data-code="x32o1o" data-name="C"></li>
-            <li class="chordcolor" data-code="133211_3" data-name="G"></li>
+        </ul>
+        <h2>Transparent background</h2>
+        <ul class="gray">
+            <li class="chord" data-code="xo221o" data-name="Am"></li>
+            <li class="chord" data-code="x32o1o" data-name="C"></li>
+            <li class="chord" data-code="133211_3" data-name="G"></li>
+        </ul>
+        <h2>Adjustable sizes and colors</h2>
+        <ul>
+            <li class="chordcolor1" data-code="xo221o" data-name="Am"></li>
+            <li class="chordcolor2" data-code="x32o1o" data-name="C"></li>
+            <li class="chordcolor3" data-code="133211_3" data-name="G"></li>
         </ul>
     </body>
 </html>
