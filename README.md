@@ -18,3 +18,7 @@ HTML
 JS
 
     $('div').chordsIO();
+
+Result
+
+    ![Example chords](http://guitarparty.github.com/chords.io/images/example.png)
