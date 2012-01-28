@@ -3,6 +3,9 @@ Chords.io
 
 Chords.io is a small jQuery plugin to display guitar chords using Raphaël SVG library.
 
+Chords.io does not *know* any chord shapes or names so you will have to provide it with
+all the data.
+
 Requirements
 ------------
 
