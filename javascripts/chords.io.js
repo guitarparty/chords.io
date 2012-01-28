@@ -30,28 +30,36 @@
             var minimumWidth = options.x0 + options.xs * options.xn;
             var minimumHeight = options.y0 + options.ys * options.yn;
             
-            console.log(minimumWidth + " " + minimumHeight)
+            //console.log(minimumWidth + " " + minimumHeight)
             
             var drawChord = function(canvas, chord) {
                 var x0=options.x0,y0=options.y0;
                 var xs=options.xs,ys=options.ys;
-                drawGrid(canvas);
+                
+                var parts = chord.code.split("_");
+                var code = parts[0];
+                var band = 1
+                if(parts.length > 1){
+                    band = parseInt(parts[1]);
+                }
+                
+                drawGrid(canvas, band);
+                
                 canvas.text(x0, y0-ys*5/4, chord.name)
                     .attr({
                         'text-anchor': 'start', 
                         fill: options.textColor,
                         'font-size': ys
                     });
-                var parts = chord.code.split("_");
-                if(parts.length > 1){
-                    canvas.text(x0 - xs*2/3, y0 + ys/2, parts[1])
+                if (band > 1) {
+                    canvas.text(x0 - xs*2/3, y0 + ys/2, band)
                     .attr({
                         'text-anchor': 'end',
                         fill: options.textColor,
                         'font-size': ys*3/5
                     });
                 }
-                var code = parts[0];
+                
                 for(i=0;i<code.length;i++) {
                     switch (code[i].toLowerCase()) {
                         case 'x':
@@ -87,7 +95,9 @@
                 }
             };
 
-            var drawGrid = function(canvas) {
+            var drawGrid = function(canvas, band) {
+                if (band === undefined)
+                    band = 1;
                 var x0=options.x0,y0=options.y0;
                 var xs=options.xs,ys=options.ys;
                 var xn=options.xn,yn=options.yn;
@@ -113,7 +123,7 @@
                 for(var j=y0;j<=y0+h;j+=ys) {
                     var path = "M" + x0 + " " + j + "L" + (x0 + w) + " " + j;
                     
-                    if(j==y0) {
+                    if(j==y0 && band <= 2) {
                         path = "M" + (x0 - 0.5) + " " + j + "L" + (x0 + 0.5 + w) + " " + j;
                         canvas.path(path).attr({
                             'stroke-width': strokeWidth*3, 
