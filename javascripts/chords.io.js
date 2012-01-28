@@ -138,16 +138,24 @@
                     }
                 }
             };
-
-         
+            
+            
             return this.each(function() {
                 var o = options;
                 
                 var obj = $(this);
-                drawChord(Raphael(obj[0], o.width, o.height), {
-                    'name': obj.attr('data-name'),
-                    'code': obj.attr('data-code')
+                
+                obj.bind("chordsio-render", function(event){
+                    $(this).empty();
+                    console.log(event);
+                    drawChord(Raphael($(this)[0], o.width, o.height), {
+                        'name': $(this).attr('data-name'),
+                        'code': $(this).attr('data-code')
+                    });
                 });
+                
+                obj.trigger("chordsio-render");
+                
             });
         }
     });
