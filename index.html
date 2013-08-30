@@ -1,37 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <style>#forkongithub a{background:#000;color:#fff;text-decoration:none;font-family:arial, sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#060;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}</style>
+
+        <link rel="stylesheet" href="stylesheets/styles.css" />
         <meta charset="utf-8">
         <title>Chords.io example</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="javascripts/raphael-min.js"></script>
-        <script src="javascripts/chords.io.js"></script>
-        <script>
-            $(document).ready(function(){
-                var settings = {
-                    backgroundColor: '#03f',
-                    borderColor: '#f00',
-                    textColor: '#f00',
-                    gridColor: '#fff',
-                    fingerColor: '#ff0',
-                    cornerRadius: 15,
-                    width: 150,
-                    height: 190,
-                    xs: 20,
-                    ys: 30,
-                    x0: 30,
-                    y0: 60
-                };
-                
-                $('.chordcolor1').chordsIO(settings);
-                settings.cornerRadius = 5;
-                $('.chordcolor2').chordsIO(settings);
-                settings.cornerRadius = 0;
-                $('.chordcolor3').chordsIO(settings);
-                
-                $('.chord').chordsIO();
-            });
-        </script>
         <style>
             .gray {
                 background-color: #acd;
@@ -42,13 +16,45 @@
             ul li {
                 display: inline;
             }
+            ul li > div {
+                display: inline;
+            }
+
+            .yellow .chord-finger {
+                fill: yellow;
+            }
+            .chordsio-chord .chord-text {
+                fill: #000;
+            }
+            .chordsio-chord .chord-finger {
+                fill: #000;
+            }
+            .chordsio-chord .chord-topfret {
+                stroke-width: 3;
+            }
+
+            .custom .chord-finger {
+                fill: #f00;
+            }
+            .custom .chord-background {
+                fill: #874f2d;
+            }
+            .custom .chord-string {
+                stroke: gold;
+            }
+            .custom .chord-fret {
+                stroke: silver;
+            }
         </style>
     </head>
     <body>
         <h1>Chords.io examples</h1>
         <h2>Plain vanilla chords</h2>
+        <pre><code>
+$('.chord').chordsIO();
+        </code></pre>
         <ul>
-            <li class="chord" data-code="xo221o" data-name="Am"></li>
+            <li><div class="chord" data-code="xo221o" data-name="Am"></div></li>
             <li class="chord" data-code="x32o1o" data-name="C"></li>
             <li class="chord" data-code="133211_3" data-name="G"></li>
         </ul>
@@ -59,10 +65,62 @@
             <li class="chord" data-code="133211_3" data-name="G"></li>
         </ul>
         <h2>Adjustable sizes and colors</h2>
+        Javascript
+        <pre><code>
+$('.chord').chordsIO({namespace:'yellow'});
+        </code></pre>
+        CSS
+        <pre><code>
+.yellow .chord-finger { fill: #ff0; }
+        </code></pre>
         <ul>
             <li class="chordcolor1" data-code="xo221o" data-name="Am"></li>
             <li class="chordcolor2" data-code="x32o1o" data-name="C"></li>
             <li class="chordcolor3" data-code="133211_3" data-name="G"></li>
         </ul>
+        <h2>Support for different instruments, e.g. Ukulele:</h2>
+        <ul>
+            <li class="ukulele" data-code="2ooo" data-name="Am"></li>
+            <li class="ukulele" data-code="ooo3" data-name="C"></li>
+            <li class="ukulele" data-code="o232" data-name="G"></li>
+        </ul>
+        <span id="forkongithub"><a href="https://github.com/guitarparty/chords.io">Fork me on GitHub</a></span>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="javascripts/raphael-min.js"></script>
+        <script src="javascripts/chords.io.js"></script>
+        <script src="javascripts/highlight.min.js"></script>
+        <script>
+
+
+
+            (function(){
+                var settings = {
+                    xSpacing: 20,
+                    ySpacing: 30,
+                    x0: 30,
+                    y0: 60,
+                    cssNamespace: 'yellow'
+                };
+                
+                $('.chordcolor1').chordsIO(settings);
+                settings.cssNamespace = 'wireframe';
+                $('.chordcolor2').chordsIO(settings);
+                settings.cssNamespace = 'custom';
+                settings.padding = 4;
+                $('.chordcolor3').chordsIO(settings);
+                
+                $('.chord').chordsIO();
+
+
+                $('.ukulele').chordsIO({instrument:'ukulele'});
+
+
+                $("code").each(function() { hljs.highlightBlock(this); });
+
+            })();
+
+        </script>
+
     </body>
 </html>
